@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendoc</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#8257E5">
+    <title>Agendoc</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/page-landing.css">
+
+</head>
+
+<body id="page-landing">
+    <div id="container">
+        <div class="logo-container">
+            <h1>Agendoc<h1>
+                    <h2 th:text="#{logo.text}"></h2>
+        </div>
+        <img class="hero-image" src="/images/landing.png" alt="Plataforma de Consultas">
+
+        <div class="buttons-container">
+            <a th:href="@{/users/showProfissionais}" class="button" th:text="#{start.text}">
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+#page-start #container{
+    width: 100vw;
+    height: 100vh;
+}
+
+#search-prof{
+    margin-top: 3.2rem;
+}
+
+#search-prof label{
+    color: var(--color-text-in-primary);
+}
+
+#search-prof .select-block{
+    margin-bottom: 1.4rem;
+}
+
+#search-prof button{
+    width: 100%;
+    height: 5.6rem;
+    background: var(--color-secondary);
+    color: var(--color-button-text);
+    border: 0;
+    border-radius: .8rem;
+    cursor: pointer;
+    font: 700 1.6rem Archivo;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    margin-top: 2.4rem;
+}
+
+#search-prof button:hover{
+    background-color:var(--color-secondary-dark);
+    /* quando eu passar o mouse por cima o botao ficara mais escuro */
+}
+
+#page-start main{
+    margin: 3.2rem auto;
+    width: 90%;
+}
+
+.prof-item{
+    /* aqui estamos construindo a "caixinha" onde fica o perfil das pessoas */
+    background-color: var(--color-box-base);
+    border: 1px solid var(--color-line-in-white);
+    border-radius: 0.8rem;
+    margin-top: 2.4rem;
+}
+
+.prof-item header{
+    padding: 3.2rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.prof-item header img{
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.prof-item header div{
+    margin-left: 2.4rem;
+}
+
+.prof-item header div strong{
+    font: 700 2.4rem Archivo;
+    /* faz com que a letra do nome fiqwue em negrito e mais fofa */
+    display: block;
+    color: var(--color-text-title);
+}
+
+.prof-item header div span{
+    font-size: 1.6rem;
+    display: block;
+    margin-top: 0.4rem;
+}
+
+.prof-item > p{
+    padding: 0 2rem;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+}
+
+.prof-item footer{
+    /* aqui estamos configurando a "parte de baixo" do quadradinho de perfil, onde vem o preço/hora e contato */
+    padding: 3.2rem 2rem;
+    background-color: var(--color-box-footer);
+    border-top: 1px solid var(--color-line-in-white);
+    margin-top: 3.2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.prof-item footer p{
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: var(--color-text-complement);
+}
+
+.prof-item footer p strong{
+    font-size: 1.6rem;
+    color: var(--color-primary);
+    display: block;
+}
+
+.prof-item footer .button{
+    width: 20rem;
+    height: 5.6rem;
+    background: var(--color-secondary);
+    color: var(--color-button-text);
+    border: 0px;
+    border-radius: .8rem;
+    cursor: pointer;
+    font: 700 1.4rem Archivo;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* space-evenly faz com que o espaçoe ntre os elementos seja constante. Evenly significa constante. */
+
+    text-decoration: none;
+
+    transition: background 0.2s;
+    margin-left: 1.6rem;
+}
+
+.prof-item footer .button:hover{
+    background: var(--color-secondary-dark);
+}
+
+.top-bar-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-bar-container .button{
+    color: black;
+}
+
+/* acima desse comentario nós temos o "mobile" pronto do css do study */
+
+@media(min-width:700px){
+    #page-start #container {
+        max-width: 100vw;
+        /* faz com que as coisas estiquem na tela. Para se adaptar pro pc. */
+    }
+
+    .page-header{
+        height: 340px;
+    }
+
+    .page-header .top-bar-container{
+        max-width: 1100px;
+    }
+
+    .page-header .header-content{
+        max-width: 740px;
+
+        margin: 0 auto;
+        /* tiro as margens para permitir as caixas de filtro pra descerem. */
+
+        flex: 1 1;
+        padding-bottom: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .page-header .header-content strong{
+        max-width: 350px;
+        /* força a quebra de linha */
+    }
+
+    .prof-item header,
+    .prof-item footer{
+        padding: 32px;
+    }
+
+    #search-prof{
+        /* estou fazendo com que os filtros de pesquisa fiquem um ao lado do outro pra pc, e nao
+        um em baixo do outro como pra celular. */
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap: 16px;
+        /* gap é o espaço entre eles. Entre cada quadrado de filtro.  */
+        position: absolute;
+        bottom: -28px;
+
+    }
+
+    #page-start main{
+        padding: 23px 0;
+        max-width: 740px;
+        margin: 0 auto;
+    }
+
+    #search-prof .select-block{
+        /* use .nome só se referir a uma classe, se for um elemento basta o nome. */
+        margin-bottom: 0px;
+    }
+
+    .prof-item > p{
+        /* esse >p faz com que pegue o p só do primeiro nivel. */
+        padding: 0 32px;
+    }
+
+    .prof-item footer p strong{
+        display: initial;
+        margin-left: 16px;
+    }
+
+    .prof-item footer button{
+        width: 245px;
+        font-size: 16px;
+        justify-content: center;
+    }
+
+    .prof-item footer button img{
+        margin-right: 16px;
+    }
+
+}

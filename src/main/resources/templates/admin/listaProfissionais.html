@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Agendoc</title>
+</head>
+
+<body>
+	<div align="center">
+		<h1 th:text="#{professional_crud.text}">
+		</h1>
+		<h2>
+			<a th:href="@{/admins/showPaginaAdmin}" th:text="#{back.text}">
+			</a>
+		</h2>
+	</div>
+	<div align="center">
+		<table border="1">
+			<caption th:text="#{professional_list.text}">
+			</caption>
+			<tr>
+				<th th:text="#{id_cpf.text}">
+				</th>
+				<th th:text="#{name.text}">
+				</th>
+				<th>Email</th>
+				<th>Area</th>
+				<th th:text="#{speciality.text}">
+				</th>
+				<th th:text="#{bio.text}">
+				</th>
+				<th th:text="#{birth.text}">
+				</th>
+				<th th:text="#{edit.text}">
+				</th>
+				<th th:text="#{delete.text}">
+				</th>
+			</tr>
+			<tr th:each="profissional : ${listaProfissionais}">
+				<td th:text="${profissional.cpf}"></td>
+				<td th:text="${profissional.nome}"></td>
+				<td th:text="${profissional.email}"></td>
+				<td th:text="${profissional.area}"></td>
+				<td th:text="${profissional.especialidade}"></td>
+				<td th:text="${profissional.bio}"></td>
+				<td th:text="${profissional.nascimento}"></td>
+				<td align="center"><a
+						th:href="@{/admins/apresentaEdicaoProfissional?(email=${profissional.email})}">🖍️</a>
+				</td>
+				<td align="center">
+					<a th:href="@{/admins/removerProfissional?(cpf=${profissional.cpf})}"
+						onclick="return confirm('Tem certeza que deseja excluir este usuário? | Are you sure you want to delete this user?');">🗑️</a>
+				</td>
+			</tr>
+		</table>
+		<br />
+		<a th:href="@{/admins/apresentaAdicionarProfissional}" th:text="#{add_professional.text}">
+		</a>
+	</div>
+</body>

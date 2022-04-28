@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-profissional-login.css">
+    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/erro.css">
+    <!--
+    <script src="../scripts/addField.js" defer></script>
+    -->
+</head>
+
+<body id="page-prof-register">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/users/retornaIndex}">
+                    <img src="../images/back.svg" alt="Voltar">
+                </a>
+            </div>
+
+            <div class="header-content">
+                <strong th:text="#{enter_platform.text}"></strong>
+                <p th:text="#{enter_platform_sub.text}"></p>
+            </div>
+        </header>
+        <main>
+            <form method="post" th:action="@{/login}">
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">
+                        <span th:text="#{login.error}"></span>
+                    </div>
+                </div>
+                <div class="input-block">
+                    <label for="username">E-mail: </label>
+                    <input type="text" id="username" name="username" value="" required />
+                </div>
+                <div class="input-block">
+                    <label for="senha" th:text="#{password.text}"></label>
+                    <input type="password" name="password" id="password" required />
+                </div>
+                <input class="button" id="login-submit" type="submit" name="login-submit" th:value="#{enter.text}"
+                    required />
+            </form>
+            <!-- 
+        <c:if test="${mensagens.existeErros}">
+            <div id="erro">
+                <div>
+                    <c:forEach var="erro" items="${mensagens.erros}">
+                        <div class="alerta" > ${erro} </div>
+                        </c:forEach>
+                </div>
+            </div>
+        </c:if>
+    -->
+            <footer>
+                <div align="center">
+                    <a th:href="@{/users/showTypes}" th:text="#{no_account.text}"></a>
+                </div>
+            </footer>
+        </main>
+    </div>
+</body>
+
+</html>

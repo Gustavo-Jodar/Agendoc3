@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="../styles/page-profissional-login.css">
+    <!--
+    <script src="../scripts/addField.js" defer></script>
+    -->
+</head>
+
+<body id="page-prof-register">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/users/showLogin}">
+                    <img src="../images/back.svg" alt="Voltar">
+                </a>
+            </div>
+
+            <div class="header-content">
+                <strong th:text="#{more_about.text}"></strong>
+            </div>
+        </header>
+                <br>
+                <br>
+                <a class="profissionais" th:href="@{/users/showCadastroCliente}" th:text="#{i_am_client.text}"></a>
+                <br>
+                <br>
+                <a class="profissionais" th:href="@{/users/showCadastroProfissional}" th:text="#{i_am_professional.text}"></a>
+    </div>
+</body>
+
+</html>

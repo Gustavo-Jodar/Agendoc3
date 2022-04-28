@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Agendoc</title>
+
+</head>
+
+<body id="page-prof-register">
+
+    <div align="center" id="container">
+        <br />
+        <div align="center">
+            <a th:href="@{/admins/listaProfissionais}" th:text="#{back.text}">
+            </a>
+        </div>
+
+        <main align="center">
+            <form th:action="@{/admins/saveProfissional}" method="POST" id="register-prof">
+                <legend th:text="#{professional_data.text}">
+                </legend>
+                <br />
+                <div>
+                    <label for="cpf" th:text="#{id_cpf.text}">
+                    </label>
+                    <input type="text" name="cpf" required />
+                </div>
+                <div>
+                    <label for="name" th:text="#{name.text}">
+                    </label>
+                    <input name="nome" id="name" required>
+                </div>
+                <div>
+                    <label for="e-mail">E-mail</label>
+                    <input name="email" id="e-mail" required>
+                </div>
+                <div>
+                    <label for="pass" th:text="#{password.text}">
+                    </label>
+                    <input name="senha" id="pass" required>
+                </div>
+                <div>
+                    <label for="birth" th:text="#{birth.text}">
+                    </label>
+                    <input type="date" name="nascimento" required>
+                </div>
+                <div class="textarea-block">
+                    <label for="bio" th:text="#{bio.text}">
+                    </label>
+                    <textarea name="bio" id="bio"></textarea>
+                </div>
+                <div>
+                    <label for="area" th:text="#{area_of_knowlegde.text}">
+                        <label th:text="#{area_of_knowlegde.text}">
+                        </label>
+                    </label>
+                    <select name="area" id="area required" required>
+                        <option value="" th:text="#{select_option.text}">
+                        </option>
+                        <option value="1" th:text="#{Medicina.text}">
+                        </option>
+                        <option value="2" th:text="#{Advocacia.text}">
+                        </option>
+                        <option value="3" th:text="#{Psicologia.text}">
+                        </option>
+                        <option value="4" th:text="#{Educacao.text}">
+                        </option>
+                        <option value="5" th:text="#{Nutricao.text}">
+                        </option>
+                        <option value="4" th:text="#{Terapia.text}">
+                        </option>
+                    </select>
+                </div>
+                <div class="input-block">
+                    <label for="especialidade" th:text="#{speciality.text}">
+                    </label>
+                    <input type="especialidade" id="especialidade" name="especialidade" required>
+                </div>
+            </form>
+            <div id="erro">
+                <div>
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            <span th:text="#{login.error.text}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" form="register-prof" value="Salvar" th:text="#{save_register.text}">
+            </button>
+        </main>
+    </div>
+</body>
+
+</html>

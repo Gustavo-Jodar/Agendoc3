@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendoc</title>
+
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-prof.css">
+    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/appointment.css">
+    <link rel="stylesheet" href="../styles/erro.css">
+
+</head>
+
+<body id="page-start">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/clientes/showIndex}">
+                    <img src="../images/back.svg" alt="Voltar">
+                </a>
+            </div>
+            <div class="header-content">
+                <strong th:text="#{make_appointment_with.text}"></strong><strong
+                    th:text=" ${profissionalEscolhido.nome}"></strong>
+                <span th:text=" ${profissionalEscolhido.area}"></span>
+                <span th:text=" ${profissionalEscolhido.especialidade}"></span>
+                <span th:text=" ${profissionalEscolhido.bio}"></span>
+                <!-- aqui teria que de alguma forma ter os dados do profissional com quem estou marcando -->
+            </div>
+        </header>
+        <div class="schedule">
+            <header class="title">
+                <strong th:text="#{make_appointment_with.text}"></strong>
+            </header>
+            <div id="erro">
+                <div id="erro">
+                    <div>
+                        <div th:if="${invDate} != null">
+                            <div class="alert alert-danger">
+                                <span th:text="#{data_inv.text}"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <fieldset id="schedule-items" class="schedule-box">
+                <legend th:text="#{choose_date.text}"></legend>
+                <div th:if="${consulta_aux != null}">
+                    <form th:action="@{/clientes/cadastraConsulta}" th:object="${consulta}" method="POST"
+                        id="register-prof">
+                        <div>
+                            <div>
+                                <label for="birth" th:text="#{date.text}"></label>
+                                <input type="date" name="data_consulta" th:value="${data_nao_formatada}" readonly>
+                            </div>
+                        </div>
+                        <legend th:text="#{choose_time.text}"></legend>
+                        <br />
+                        <p th:text="#{info_time.text}"></p>
+
+                        <select class="form-control" name="horario" required>
+                            <option th:each="hora : ${horariosLivres}" th:value="${hora}" th:text="${hora} + h00min">
+                            </option>
+                        </select>
+
+
+                        <legend th:text="#{add_link.text}"></legend>
+                        <input name="link_meet" class="link" type="url" value="" required>
+                        <input name="cpf_profissional" th:value="${profissionalEscolhido.cpf}" type="hidden">
+                        <input name="cpf_cliente" th:value="${cliente.cpf}" type="hidden">
+                        <input name="nome_cliente" th:value="${cliente.nome}" type="hidden">
+                        <input name="nome_profissional" th:value="${profissionalEscolhido.nome}" type="hidden">
+                    </form>
+                    <button type="submit" class="save" form="register-prof" th:text="#{schedule_appointment.text}">
+                    </button>
+                    <a class="button"
+                        th:href="@{/clientes/apresentaMarcarConsulta1?(cpf_profissional=${profissionalEscolhido.cpf})}"
+                        th:text="#{check_other_times.text}">
+                    </a>
+                </div>
+                <div th:if="${consulta_aux == null}">
+                    <form
+                        th:action="@{/clientes/apresentaMarcarConsulta2?(cpf_profissional=${profissionalEscolhido.cpf})}"
+                        method="POST" id="register-prof">
+                        <div class="schedule-item">
+                            <div class="input-block">
+                                <label for="weekday" th:text="#{date.text}"></label>
+                                <input type="date" name="data_consulta" class="data-input" required>
+                            </div>
+                        </div>
+                    </form>
+                    <button type="submit" form="register-prof" class="save" value=""
+                        th:text="#{choose_time.text}"></button>
+                    <div id="erro">
+                        <div>
+                            <div th:if="${param.error}">
+                                <div class="alert alert-danger">
+                                    <span th:text="#{login.error}"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </fieldset>
+    </div>
+    </div>
+</body>

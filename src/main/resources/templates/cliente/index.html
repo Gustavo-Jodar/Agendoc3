@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/perfil.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-prof.css">
+    <!-- <link rel="stylesheet" href="/<%= contextPath%>/styles/forms.css"> -->
+
+</head>
+
+<body id="page-start">
+    <div id="container">
+        <header class="page-header">
+
+            <div class="header-content">
+                <strong th:text="#{welcome.text}"></strong><strong th:text="${usuarioLogado.nome}"></strong>
+                <p th:text="#{you_can_make_appointment.text}"></p>
+            </div>
+        </header>
+
+        <main>
+            <div class="buttons-container">
+                <a class="button" th:href="@{/clientes/showProfissionais}" th:text="#{make_appointment.text}">
+                </a>
+                <div class="buttons-container">
+                    <form th:action="@{/logout}" method="post">
+                        <div class="row">
+                            <div class="col-sm-12 col-sm-offset-3">
+                                <input type="submit" name="login-submit" id="login-submit" class="button"
+                                    th:value="#{logout.text}">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <header class="title">
+                <strong th:text="#{appointments.text}"></strong>
+            </header>
+            <!-- Aqui ficaria o looping pra mostrar todas consultas, da data mais proxima da atual até a mais antiga -->
+            <tr th:each="consulta : ${consultas}">
+                <article class="prof-item">
+                    <header>
+                        <div th:text="${consulta.nome_profissional}">
+                            <strong th:text="${consulta.nome_profissional}"></strong>
+                        </div>
+                    </header>
+
+                    <p th:text="#{appointment_schedule_for.text}"></p>
+                    <p th:text="${consulta.data_consulta}"></p>
+                    <div style="display: flex;margin-left: 3rem;"> <p th:text="#{time.text}"></p> 
+                        <p th:text="${consulta.horario}"></p><p>:00 de Brasilia</p> 
+                    </div>
+                    <footer>
+                        </p>
+                        <a class="button" th:href="@{/clientes/apresentaConsulta?(id=${consulta.id})}"
+                            th:text="#{appointment_info.text}">
+                        </a>
+                    </footer>
+                </article>
+            </tr>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.alerta {
+padding: 25px;
+border: 1px solid gray;
+border-radius: 3px;
+margin: 10px;
+font-size: 18px;
+border-color: #e8273b;
+color: #FFF;
+background-color: #ed5565;
+text-align: center;
+}

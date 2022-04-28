@@ -1,0 +1,89 @@
+.save{
+    width: 15rem;
+    height: 4.5rem;
+    border-radius: 0.8rem;
+    margin-top: 1.6rem;
+    margin-left: 0.5rem;
+    border-color: none;
+    border: none;
+    font: 1.5rem Comic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    color: var(--color-button-text);
+    background: var(--color-primary-light);
+}
+
+span {
+    color: var(--color-text-in-primary);
+}
+
+.schedule-box{
+    border: none;
+    margin-left: 1rem;
+}
+
+input.data-input{
+    width: 80% !important;
+}
+
+.input-block{
+    margin-left: 0.5rem;
+}
+
+strong{
+    margin-left: 1rem;
+}
+
+
+header.page-header {
+    margin-bottom: 2rem;
+}
+
+legend{
+    margin-top: 1rem;
+}
+
+a.button{
+    display: flex;
+    margin: 1rem;
+}
+
+select.form-control{
+    width: 80%;
+    height: 5.6rem;
+    margin-top: 0.8rem;
+    border-radius: 0.8rem;
+    background: var(--color-input-background);
+    border: 1px solid var(--color-line-in-white);
+    outline: 0;
+    padding: 0 1.6rem;
+    font: 1.6rem Comic;
+}
+
+div .link-time{
+    display: flex;
+    align-items: baseline;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+strong{
+    margin-right: 1rem;
+}
+
+.cancel{
+    display: flex !important;
+}
+
+.link{
+    
+    width: 100% !important;
+}
+
+.saveLink{
+    width: 10%;
+    margin-left: 0.5rem;
+}

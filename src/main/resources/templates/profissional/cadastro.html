@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-profissional-login.css">
+    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/erro.css">
+
+</head>
+
+<body id="page-prof-register">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/users/showTypes}">
+                    <img src="../images/back.svg" alt="Voltar">
+                </a>
+            </div>
+
+            <div class="header-content">
+                <strong th:text="#{make_available_appointments.text}"></strong>
+                <p th:text="#{acess_to_specialities_sub.text}"></p>
+            </div>
+        </header>
+
+        <main>
+            <form th:action="@{/users/salvarProfissional}" th:object="${profissional}" method="POST" id="register-prof"
+                enctype="multipart/form-data">
+                <fieldset>
+                    <legend th:text="#{your_data.text}"></legend>
+                    <div class="file-block">
+                        <label for="file" th:text="#{pdf.text}"></label>
+                        <input type="file" name="file" />
+                    </div>
+                    <div class="input-block">
+                        <label for="nome" th:text="#{name.text}"></label>
+                        <input name="nome" id="nome" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="email">E-mail</label>
+                        <input name="email" id="email" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="senha" th:text="#{password.text}"></label>
+                        <input name="senha" id="senha" type="password" required>
+                    </div>
+                    <!-- <div class="input-block">
+                            <label for="avatar">Curriculo em PDF</label>
+                            <input name="avatar" id="avatar" type="url">
+                        </div> -->
+                    <div class="input-block">
+                        <label for="cpf" th:text="#{id_cpf.text}"></label>
+                        <input name="cpf" id="cpf" type="number" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="nascimento" th:text="#{birth.text}"></label>
+                        <input type="date" name="nascimento">
+                    </div>
+
+                    <div class="textarea-block">
+                        <label for="bio" th:text="#{bio.text}"></label>
+                        <textarea name="bio" id="bio"></textarea>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend th:text="#{area_of_knowlegde.text}"></legend>
+                    <div class="select-block">
+                        <label for="area" th:text="#{area.text}"></label>
+                        <select name="area" id="area required" required>
+                            <option value="" th:text="#{select_option.text}"></option>
+                            <option value="1" th:text="#{Medicina.text}"></option>
+                            <option value="2" th:text="#{Advocacia.text}"></option>
+                            <option value="3" th:text="#{Psicologia.text}"></option>
+                            <option value="4" th:text="#{Educacao.text}"></option>
+                            <option value="5" th:text="#{Nutricao.text}"></option>
+                            <option value="4" th:text="#{Terapia.text}"></option>
+                        </select>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="especialidade" th:text="#{speciality.text}"></label>
+                        <input type="especialidade" id="especialidade" name="especialidade" required>
+                    </div>
+                </fieldset>
+
+            </form>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">
+                    <span th:text="#{login.error}"></span>
+                </div>
+            </div>
+            <footer>
+                <button type="submit" form="register-prof" value="Cadastrar" th:text="#{save_register.text}"></button>
+            </footer>
+        </main>
+    </div>
+    </fmt:bundle>
+</body>
+
+</html>

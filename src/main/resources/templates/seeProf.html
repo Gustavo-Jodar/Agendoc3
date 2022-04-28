@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/header.css">
+    <link rel="stylesheet" href="/styles/page-prof.css">
+    <link rel="stylesheet" href="/styles/forms.css">
+
+</head>
+
+<body id="page-start">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/users/retornaIndex}">
+                    <img src="/images/back.svg" alt="Voltar">
+                </a>
+                <a class="button" th:href="@{/aux/getRole}">Login / Profile</a>
+            </div>
+
+            <div class="header-content">
+                <strong th:text="#{profissionais_filtro.text}"></strong>
+                <form id="search-prof" method="get" th:action="@{/users/showProfissionais}">
+                    <div class="select-block">
+                        <label for="area">Area</label>
+                        <select name="area" id="area">
+                            <option value="" th:text="#{select_option.text}"></option>
+                            <option value="Medicina" th:text="#{Medicina.text}"></option>
+                            <option value="Advocacia" th:text="#{Advocacia.text}"></option>
+                            <option value="Psicologia" th:text="#{Psicologia.text}"></option>
+                            <option value="Educacao" th:text="#{Educacao.text}"></option>
+                            <option value="Nutricao" th:text="#{Nutricao.text}"></option>
+                            <option value="Terapia" th:text="#{Terapia.text}"></option>
+                        </select>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="weekday" th:text="#{speciality.text}"></label>
+                        <input name="especialidade" id="especialidade" />
+                    </div>
+                    <button type="submit" th:text="#{filter.text}"></button>
+                </form>
+            </div>
+        </header>
+
+        <main>
+            <tr th:each="profissional : ${listaProfissionais}">
+                <article class="prof-item">
+                    <header>
+                        <div>
+                            <!-- <strong>{{prof.name}}</strong>
+                            <span>{{prof.area}}</span> -->
+                            <strong th:text="${profissional.nome}"></strong>
+                            <span th:text="${profissional.area}"></span>
+                        </div>
+                    </header>
+
+                    <!-- <p>{{prof.bio}}</p> -->
+                    <p th:text="${profissional.bio}"></p>
+
+                    <footer>
+                        <p th:text="#{speciality.text}">
+                        <p th:text="${profissional.especialidade}"></p>
+                        </p>
+                        <a class="button" th:href="@{/aux/getRole}" th:text="#{schedule_appointment.text}"></a>
+                        <!-- encaminha para pagina de login se nao estiver logado -->
+                    </footer>
+                </article>
+            </tr>
+            <!-- ja deixei o for comentadinho, para como seria para mostrar diversos profissionais do banco -->
+
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+div .buttons-container {
+    display: flex;
+    justify-content: flex-end !important;
+}
+
+.buttons-container .button {
+    width: 15rem;
+    height: 4.5rem;
+    border-radius: 0.8rem;
+    margin-right: 1.6rem;
+    border-color: none;
+    border: none;
+    font: 1.5rem Comic;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s;
+    color: var(--color-button-text);
+    background: var(--color-primary-light);
+}
+
+.buttons-container .button:hover {
+    background: var(--color-primary-lighter);
+}
+.title{
+    font-size: 2rem;
+}
+
+.prof-item footer{
+    margin-top: 1.2rem !important;
+    height: 8rem;
+}

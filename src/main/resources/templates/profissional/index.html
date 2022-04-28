@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-prof.css">
+    <link rel="stylesheet" href="../styles/perfil.css">
+
+</head>
+
+<body id="page-start">
+    <div id="container">
+        <header class="page-header">
+
+            <div class="header-content">
+                <strong th:text="#{welcome.text}"></strong><strong th:text=" ${usuarioLogado.nome}"></strong>
+                <p th:text="#{you_can_make_available_appointment.text}"></p>
+            </div>
+        </header>
+
+        <main>
+            <div class="buttons-container">
+                <form th:action="@{/logout}" method="post">
+                    <div class="row">
+                        <div class="col-sm-12 col-sm-offset-3">
+                            <input type="submit" name="login-submit" id="login-submit" class="button"
+                                th:value="#{logout.text}">
+                        </div>
+                    </div>
+                </form>
+                <!--
+                <a class="button" th:href="@{../logout}" th:text="#{logout.text}">
+                </a>-->
+            </div>
+            <header class="title">
+                <strong th:text="#{appointments.text}"></strong>
+            </header>
+            <!-- Aqui ficaria o looping pra mostrar todas consultas, da data mais proxima da atual até a mais antiga -->
+            <tr th:each="consulta : ${consultas}">
+                <article class="prof-item">
+                    <header>
+                        <div>
+                            <strong th:text="${consulta.nome_cliente}"></strong>
+                            <!-- <span>Consulta particular</span> -->
+                        </div>
+                    </header>
+
+                    <p th:text="#{appointment_schedule_for.text}"></p>
+                    <p th:text="${consulta.data_consulta}"></p>
+                    <p th:text="#{time.text}"></p>
+                    <label th:text="${consulta.horario}"></label><label>:00 de Brasilia</label>
+
+                    <footer>
+                        <p>Consulta<strong>Online</strong>
+                        </p>
+                        <a class="button" th:href="@{/profissionais/apresentaConsulta?(id=${consulta.id})}"
+                            th:text="#{appointment_info.text}">
+                        </a>
+                        <!-- Podemoriamos fazer essa opcao q aparece só se a consulta ja tiver passado: -->
+                        <!-- <a class ="button"> 
+                        Avaliar consulta
+                    </a> -->
+                    </footer>
+                </article>
+            </tr>
+        </main>
+    </div>
+</body>
+
+</html>

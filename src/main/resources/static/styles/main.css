@@ -1,0 +1,58 @@
+:root {
+    --color-background: #F0F0F7;
+    --color-primary-lighter: #bbd0f7;
+    --color-primary-light: #8db0f2;
+    --color-primary: #6495ed;
+    --color-primary-dark: #4881ea;
+    --color-primary-darker: #1b61e4;
+    --color-secondary: #00e699;
+    --color-secondary-dark: #00b377;
+    --color-title-in-primary: #FFFFFF;
+    --color-text-in-primary: #bbd0f7;
+    --color-text-title: #6A6180;
+    --color-text-complement: #9C98A6;
+    --color-text-base: #6A6180;
+    --color-line-in-white: #E6E6F0;
+    --color-input-background: #F8F8FC;
+    --color-button-text: #FFFFFF;
+    --color-box-base: #FFFFFF;
+    --color-box-footer: #FAFAFC;
+    --color-small-info: #C1BCCC;
+    font-size: 60%; 
+}
+/*  root cria variaveis para as cores, depois para utilizar elas basta chamar var(nome-dela) 
+ao inves do nome da cor como blue */
+
+*{
+    /* pega todos os elementos */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100vh;
+} 
+
+body {
+    background: var(--color-background);
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+}
+
+body, input, button, textarea{
+    font: 500 1.6rem Comic; 
+    color: var(--color-text-base);
+}
+
+#container{
+    width: 90vw; 
+    max-width: 700px;
+}  
+
+@media(min-width: 700px){
+    :root {
+        font-size: 62.5%; 
+    }
+}

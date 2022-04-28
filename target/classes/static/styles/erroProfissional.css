@@ -1,0 +1,15 @@
+.alerta {
+padding: 25px;
+border: 1px solid gray;
+border-radius: 3px;
+margin: 10px;
+font-size: 18px;
+border: none;
+color: #FFF;
+background-color: white;
+text-align: center;
+}
+
+.alerta-text{
+    color: red;
+}

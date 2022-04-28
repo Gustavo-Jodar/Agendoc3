@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-profissional-login.css">
+    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/erro.css">
+
+    <script src="../scripts/addField.js" defer></script>
+
+</head>
+
+<body id="page-prof-register">
+    <div id="container">
+
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/users/showTypes}">
+                    <img src="../images/back.svg" alt="Voltar">
+                </a>
+            </div>
+
+            <div class="header-content">
+                <strong th:text="#{acess_to_specialities.text}"></strong>
+                <p th:text="#{acess_to_specialities_sub.text}"></p>
+            </div>
+            <br /><br /><br />
+        </header>
+
+        <main>
+            <form th:action="@{/users/salvarCliente}" th:object="${cliente}" method="POST" id="register-prof">
+                <fieldset>
+                    <legend th:text="#{your_data.text}"></legend>
+                    <div class="input-block">
+                        <label for="cpf" th:text="#{id_cpf.text}"></label>
+                        <input type="text" name="cpf" id="cpf" required />
+                    </div>
+
+                    <div class="input-block">
+                        <label for="name" th:text="#{name.text}"></label>
+                        <input name="nome" id="name" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="e-mail">E-mail</label>
+                        <input name="email" id="e-mail" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="senha" th:text="#{password.text}"></label>
+                        <input name="senha" id="pass" type="password" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="birth" th:text="#{birth.text}"></label>
+                        <input type="date" name="nascimento">
+                    </div>
+                    <div class="input-block">
+                        <label th:text="#{tel.text}"></label>
+                        <input name="telefone" type="text" /><br />
+                    </div>
+                    <div class="input-block">
+                        <label th:text="#{sex.text}"></label>
+                        <input name="sexo" type="text" /><br />
+                    </div>
+                </fieldset>
+            </form>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">
+                    <span th:text="#{login.error}"></span>
+                </div>
+            </div>
+            <!--
+        <c:if test="${mensagens.existeErros}">
+            <div id="erro">
+                <div>
+                    <c:forEach var="erro" items="${mensagens.erros}">
+                        <div class="alerta" > ${erro} </div>
+                        </c:forEach>
+                </div>
+            </div>
+        </c:if>
+    -->
+            <footer>
+                <button type="submit" form="register-prof" value="Cadastrar" th:text="#{save_register.text}"></button>
+            </footer>
+
+        </main>
+    </div>
+</body>
+
+</html>

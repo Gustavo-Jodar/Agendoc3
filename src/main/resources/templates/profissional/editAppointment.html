@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendoc</title>
+
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/page-prof.css">
+    <link rel="stylesheet" href="../styles/forms.css">
+    <link rel="stylesheet" href="../styles/appointment.css">
+    <link rel="stylesheet" href="../styles/erro.css">
+
+</head>
+
+<body id="page-start">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a th:href="@{/profissionais/showIndex}">
+                    <img src="../images/back.svg" alt="Voltar">
+                </a>
+            </div>
+            <div class="header-content">
+                <strong th:text="#{info_appointment_see_about.text}"></strong>
+                <span th:text="#{info_appointment_rule_one.text}"></span>
+                <span th:text="#{info_appointment_rule_two.text}"></span>
+                <span th:text="#{info_appointment_rule_three.text}"></span>
+            </div>
+        </header>
+        <div class="schedule">
+            <div class="link-time">
+                <strong th:text="#{client.text}"></strong>
+                <legend th:text="${consulta.nome_cliente}"></legend>
+            </div>
+            <div class="link-time">
+                <strong th:text="#{time_appointment.text}"></strong>
+                <legend th:text="${consulta.data_consulta}"></legend>-<legend th:text="${consulta.horario}"></legend>
+                h00min
+            </div>
+            <div class="link-time">
+                <div th:if="${consulta.link_meet}">
+                    <strong>Link Google Meet:</strong>
+                    <input name="link_meet" class="link" type="url" th:value="${consulta.link_meet}">
+                </div>
+                <div th:if="!${consulta.link_meet}">
+                    <form th:action="@{/profissionais/edit_link}">
+                        <strong>Link Google Meet:</strong>
+                        <input name="link_meet" class="link" type="url" th:value="${consulta.link_meet}">
+                        <input name="id" th:value="${consulta.id}" type="hidden">
+                        <button class="save" type="submit" th:text="#{enter_link.text}"></button>
+                    </form>
+                </div>
+
+            </div>
+            <div class="cancel">
+                <a class="save" type="cancel" th:href="@{/profissionais/cancelaConsulta?(id=${consulta.id})}"
+                    onclick="return confirm('Tem certeza que deseja cancela essa consulta? | Are you sure you want to cancel this appointment?');"
+                    th:text="#{cancel_appointment.text}"></a>
+            </div>
+        </div>
+    </div>
+</body>
