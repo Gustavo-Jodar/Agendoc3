@@ -49,6 +49,8 @@ public class profissionaisRESTController {
         Map<String, Object> map = (Map<String, Object>) json.get("profissional");
 
         Object cpf = map.get("cpf");
+        System.out.println(cpf);
+        profissional.setCpf(cpf.toString());
         if (cpf instanceof String) {
             profissional.setCpf(cpf.toString());
         } else {
@@ -113,8 +115,7 @@ public class profissionaisRESTController {
         return ResponseEntity.ok(lista);
     }
 
-    @RequestMapping(path = "/profissionais/especialidades/{}", produces = "application/json", method = RequestMethod.PUT)
-    @ResponseBody
+    @PutMapping(path = "/profissionais/{cpf}")
     public ResponseEntity<Profissional> atualiza(@PathVariable("cpf") String cpf, @RequestBody JSONObject json) {
         try {
             if (isJSONValid(json.toString())) {

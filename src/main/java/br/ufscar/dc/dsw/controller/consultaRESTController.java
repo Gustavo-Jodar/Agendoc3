@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -31,7 +32,11 @@ import br.ufscar.dc.dsw.domain.*;
 public class consultaRESTController {
     @Autowired
     daoCliente daoCliente;
+
+    @Autowired
     daoConsulta daoConsulta;
+
+    @Autowired
     daoProfissional daoProfissional;
 
     private boolean isJSONValid(String jsonInString) {
@@ -44,7 +49,8 @@ public class consultaRESTController {
 
     @GetMapping(path = "/consultas")
     public ResponseEntity<List<Consulta>> lista() {
-        List<Consulta> lista = daoConsulta.findAll();
+        List<Consulta> lista = new ArrayList<>();
+        lista = daoConsulta.findAll();
         if (lista.isEmpty()) {
             return ResponseEntity.notFound().build();
         }
@@ -72,7 +78,7 @@ public class consultaRESTController {
     @GetMapping(path = "/consultas/profissionais/{cpf_profissional}")
     public ResponseEntity<List<Consulta>> listaConsultasProfissionais(
             @PathVariable("cpf_profissional") String cpf_profissional) {
-        List<Consulta> consultas = daoConsulta.get_by_cpf_cliente(cpf_profissional.replaceAll("\\s+", ""));
+        List<Consulta> consultas = daoConsulta.get_by_cpf_profissional(cpf_profissional.replaceAll("\\s+", ""));
         if (consultas == null) {
             return ResponseEntity.notFound().build();
         }

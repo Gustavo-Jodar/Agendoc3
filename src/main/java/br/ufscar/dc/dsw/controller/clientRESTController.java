@@ -41,11 +41,11 @@ public class clientRESTController {
     }
 
     @SuppressWarnings("unchecked")
-    private void parse(Cliente cliente, JSONObject json) throws ParseException {
+    private Cliente parse(Cliente cliente, JSONObject json) throws ParseException {
 
         Map<String, Object> map = (Map<String, Object>) json.get("cliente");
-        System.out.println("5");
         Object cpf = map.get("cpf");
+        cliente.setCpf(cpf.toString());
         if (cpf instanceof String) {
             cliente.setCpf(cpf.toString());
         } else {
@@ -61,6 +61,7 @@ public class clientRESTController {
         cliente.setSenha((String) map.get("senha"));
         cliente.setSexo((String) map.get("sexo"));
         cliente.setTelefone((String) map.get("telefone"));
+        return cliente;
     }
 
     @GetMapping(path = "/clientes")
@@ -100,8 +101,7 @@ public class clientRESTController {
         }
     }
 
-    @RequestMapping(path = "/clientes/{cpf}", produces = "application/json", method = RequestMethod.PUT)
-    @ResponseBody
+    @PutMapping(path = "/clientes/{cpf}")
     public ResponseEntity<Cliente> atualiza(@PathVariable("cpf") String cpf, @RequestBody JSONObject json) {
         try {
             if (isJSONValid(json.toString())) {
@@ -109,7 +109,7 @@ public class clientRESTController {
                 if (cliente == null) {
                     return ResponseEntity.notFound().build();
                 } else {
-                    parse(cliente, json);
+                    cliente = parse(cliente, json);
                     daoCliente.save(cliente);
                     return ResponseEntity.ok(cliente);
                 }
